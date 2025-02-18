@@ -11,11 +11,9 @@
   <ion-refresher slot="fixed" mode="ios" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
   <ion-grid *ngIf="catbreeds.length === 0 && !isLoading" class="no-results-message">
     <ion-label>{{ noResultsMessage }}</ion-label>
   </ion-grid>
-
   <ion-grid *ngIf="!isLoading && catbreeds.length > 0">
     <ion-card *ngFor="let item of catbreeds">
       <ion-grid [fixed]="true">
