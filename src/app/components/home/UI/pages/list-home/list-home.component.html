@@ -20,20 +20,21 @@
     <ion-card *ngFor="let item of catbreeds">
       <ion-grid [fixed]="true">
         <ion-row>
-          <ion-col>{{ item.name }}</ion-col>
-          <ion-col class="ion-text-right" (click)="seeMore(item)">Mas...</ion-col>
+          <ion-col class="text-bold">{{ item.name }}</ion-col>
+          <ion-col class="text-bold ion-text-right" (click)="seeMore(item)">Mas...</ion-col>
         </ion-row>
       </ion-grid>
       <ion-img
         [width]="item.image?.width || '100%'"
-        height="300px"
         [src]="item.image?.url || 'https://cdn.pixabay.com/photo/2023/04/27/11/36/maine-coon-7954384_640.jpg'"
         preload="auto">
       </ion-img>
       <ion-grid [fixed]="true">
         <ion-row>
-          <ion-col>{{ item.origin }}</ion-col>
-          <ion-col class="ion-text-right">{{ item.intelligence }}</ion-col>
+          <ion-col class="text-bold">{{ item.origin }}</ion-col>
+          <ion-col class="ion-text-right">
+            <ion-badge color="light">Adaptabilidad: {{ item.intelligence }}</ion-badge>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card>
