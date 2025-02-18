@@ -1,5 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonGrid, IonRow, IonCol, IonCard, IonRefresherContent, IonRefresher, IonSkeletonText, IonImg } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonSearchbar, IonGrid, IonRow, IonCol, IonCard, IonRefresherContent, IonRefresher, IonSkeletonText, IonImg, IonBadge } from '@ionic/angular/standalone';
 import { CatBreed, Search } from '../../../interfaces/list-home.interface';
 import { ServicesService } from '../../../services/apis-service';
 import { Router } from '@angular/router';
@@ -26,7 +26,8 @@ import { ToastController } from '@ionic/angular';
     IonCard,
     IonRefresherContent,
     IonRefresher,
-    IonSkeletonText
+    IonSkeletonText,
+    IonBadge
   ],
   providers: [ServicesService]
 })

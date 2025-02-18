@@ -32,8 +32,9 @@
       <ion-grid [fixed]="true">
         <ion-row>
           <ion-col class="text-bold">{{ item.origin }}</ion-col>
-          <ion-col class="ion-text-right">
-            <ion-badge color="light">Adaptabilidad: {{ item.intelligence }}</ion-badge>
+          <ion-col class="adaptability ion-text-right">
+            <ion-label class="text-bold">Adaptabilidad:</ion-label>
+            <ion-badge class="item" color="light">{{ item.intelligence }}</ion-badge>
           </ion-col>
         </ion-row>
       </ion-grid>
