@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ catbreedHome?.name }}</ion-title>
+  </ion-toolbar>
+  <ion-grid *ngIf="!isLoadingImg">
+    <img [width]="image?.width" height="350px" [src]="image?.url || 'assets/images/cat-default.jpg'">
+  </ion-grid>
+  <ion-grid class="image" *ngIf="isLoadingImg">
+    <ion-spinner name="lines-sharp"></ion-spinner>
+  </ion-grid>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="custom-content">
+    <ion-grid>
+
+      <ion-card *ngIf="!isLoading" class="custom-card">
+        <ion-row>
+          <ion-col>{{ catbreedHome?.description }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col> <ion-label class="text-bold">Nombre del país: </ion-label> {{ catbreedHome?.origin }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-label class="text-bold">Inteligencia: </ion-label> {{ catbreedHome?.intelligence }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-label class="text-bold">Adaptabilidad: </ion-label> {{ catbreedHome?.adaptability }}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col><ion-label class="text-bold">Tiempo de vida: </ion-label> {{ catbreedHome?.life_span }}</ion-col>
+        </ion-row>
+      </ion-card>
+
+      <ion-card *ngIf="isLoading">
+        <ng-container *ngFor="let skeleton of skeletonItems">
+          <ion-grid [fixed]="true">
+            <ion-row>
+              <ion-col>
+                <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-skeleton-text animated height="300px"></ion-skeleton-text>
+        </ng-container>
+      </ion-card>
+
+    </ion-grid>
+</ion-content> 
+

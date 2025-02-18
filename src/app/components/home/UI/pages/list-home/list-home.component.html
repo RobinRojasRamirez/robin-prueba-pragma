@@ -1,0 +1,55 @@
+<ion-header [translucent]="true" class="custom-header">
+  <ion-toolbar class="ion-text-center">
+    <ion-title>Catbreeds</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="search($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="custom-content">
+  <ion-refresher slot="fixed" mode="ios" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid *ngIf="catbreeds.length === 0 && !isLoading" class="no-results-message">
+    <ion-label>{{ noResultsMessage }}</ion-label>
+  </ion-grid>
+
+  <ion-grid *ngIf="!isLoading && catbreeds.length > 0">
+    <ion-card *ngFor="let item of catbreeds">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col>{{ item.name }}</ion-col>
+          <ion-col class="ion-text-right" (click)="seeMore(item)">Mas...</ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-img
+        [width]="item.image?.width || '100%'"
+        height="300px"
+        [src]="item.image?.url || 'https://cdn.pixabay.com/photo/2023/04/27/11/36/maine-coon-7954384_640.jpg'"
+        preload="auto">
+      </ion-img>
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col>{{ item.origin }}</ion-col>
+          <ion-col class="ion-text-right">{{ item.intelligence }}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </ion-grid>
+
+  <ion-card *ngIf="isLoading">
+    <ng-container *ngFor="let skeleton of skeletonItems">
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col>
+            <ion-skeleton-text animated class="skeleton"></ion-skeleton-text>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-skeleton-text animated height="300px"></ion-skeleton-text>
+    </ng-container>
+  </ion-card>
+
+</ion-content>
